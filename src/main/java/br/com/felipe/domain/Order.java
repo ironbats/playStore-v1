@@ -7,14 +7,11 @@
 
 package br.com.felipe.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
-@Entity
+@Entity(name = "abstractOrder")
 public class Order implements Serializable {
     private static final long serialVersionUID = -4288995611694656494L;
 
@@ -22,9 +19,18 @@ public class Order implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private Date dateInstance;
+
+    @OneToOne(cascade = CascadeType.ALL,mappedBy = "order")
     private Payment payment;
+
+    @ManyToOne
+    @JoinColumn(name = "customer_id")
     private Customer customer;
+
+    @ManyToOne
+    @JoinColumn(name = "deliveryAddress_id")
     private Address deliveryAddress;
+
     private String orderCode;
 
     public Order() {

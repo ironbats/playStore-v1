@@ -9,9 +9,11 @@ package br.com.felipe.domain;
 
 import br.com.felipe.enums.PaymentStatus;
 
+import javax.persistence.Entity;
 import java.io.Serializable;
 import java.util.Date;
 
+@Entity
 public class BoletoPayment extends Payment implements Serializable {
 
     private static final long serialVersionUID = -7463602459853992L;

@@ -9,6 +9,9 @@ package br.com.felipe.domain;
 
 import br.com.felipe.enums.PaymentStatus;
 
+import javax.persistence.Entity;
+
+@Entity
 public class CreditCardPayment extends Payment {
 
     private Integer installment;

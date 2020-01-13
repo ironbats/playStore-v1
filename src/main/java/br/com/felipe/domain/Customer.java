@@ -27,6 +27,7 @@ public class Customer implements Serializable {
     private Set<String> phones = new HashSet<>();
 
 
+    @OneToMany(mappedBy = "customer")
     private List<Order> orders = new ArrayList<>();
 
     public Customer() {

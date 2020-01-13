@@ -9,20 +9,20 @@ package br.com.felipe.domain;
 
 import br.com.felipe.enums.PaymentStatus;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-public class Payment implements Serializable {
+@Inheritance(strategy = InheritanceType.JOINED)
+public abstract  class Payment implements Serializable {
     private static final long serialVersionUID = 3809093607421598932L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private Integer paymentStatus;
+    @OneToOne
+    @JoinColumn(name = "order_id")
+    @MapsId
     private Order order;
 
     public Payment() {
